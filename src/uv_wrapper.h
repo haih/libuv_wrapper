@@ -26,21 +26,12 @@
 #ifndef UV_WRAPPER_H
 #define UV_WRAPPER_H
 
-#include <iostream>
-using namespace std;
-
-#include "uv.h"
-#include "glog/logging.h"
-
-#define DISALLOW_COPY_AND_ASSIGN(TypeName) \
-  TypeName(const TypeName&);               \
-  void operator=(const TypeName&)
+#include "define.h"
 
 //
 // Handle Types
 //
 /*
-
 typedef struct uv_loop_s	 uv_loop_t;
 typedef struct uv_handle_s	 uv_handle_t;
 typedef struct uv_stream_s	 uv_stream_t;
@@ -79,19 +70,15 @@ typedef struct uv_interface_address_s 	uv_interface_address_t;
 class CHandle
 {
 public:
-	CHandle(uv_loop_t* loop,uv_handle_t* pHandle = NULL):
-				m_pHandle(pHandle),m_tid(uv_thread_self())
+	CHandle(uv_loop_t* loop = NULL,uv_handle_t* pHandle = NULL):
+				m_loop(loop? loop : uv_default_loop()),
+                m_pHandle(pHandle),m_tid(uv_thread_self())
 	{
-		if(NULL == loop)
-		{
-			m_loop = uv_default_loop();
-		}
-		else
-		{
-			m_loop = loop;
-		}
 	}
-	static CHandle* GetInstance();
+	static CHandle* GetInstance()
+    {
+     
+    }   
 
 	virtual ~CHandle(){}
 	
@@ -103,6 +90,7 @@ public:
 	{
 		return m_loop;
 	}
+    virtual void SetThreadId(){}
 	virtual unsigned long GetThreadId()
 	{
 		return m_tid;

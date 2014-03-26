@@ -7,7 +7,8 @@
 
 void test()
 {
-	CHandle* pHandle = new CHandle();
+	CHandle* pHandle = CHandle::GetInstance();
+	ASSERT(pHandle);
 	unsigned long threadId = pHandle->GetThreadId();
 	cout<<"Get thread Id = "<<threadId<<endl;
 	return;
