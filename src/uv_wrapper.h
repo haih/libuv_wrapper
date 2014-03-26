@@ -9,5 +9,6 @@
 using namespace std;
 
 #include "uv.h"
+#include "glog/logging.h"
 
 #endif
