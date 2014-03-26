@@ -58,7 +58,7 @@ typedef struct uv_interface_address_s 	uv_interface_address_t;
 class CHandle
 {
 public:
-	CHandle(uv_loop_t* loop = NULL,uv_handle_t* pHandle = NULL):
+	CHandle(uv_loop_t* loop,uv_handle_t* pHandle = NULL):
 				m_pHandle(pHandle),m_tid(uv_thread_self())
 	{
 		if(NULL == loop)
@@ -70,6 +70,8 @@ public:
 			m_loop = loop;
 		}
 	}
+	static CHandle* GetInstance();
+
 	virtual ~CHandle(){}
 	
 	virtual void SetLoop(uv_loop_t* loop)
