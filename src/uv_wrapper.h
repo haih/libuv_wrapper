@@ -75,11 +75,6 @@ public:
                 m_pHandle(pHandle),m_tid(uv_thread_self())
 	{
 	}
-	static CHandle* GetInstance()
-    {
-     
-    }   
-
 	virtual ~CHandle(){}
 	
 	virtual void SetLoop(uv_loop_t* loop)
