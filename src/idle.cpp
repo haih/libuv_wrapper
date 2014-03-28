@@ -3,7 +3,6 @@
 
 CIdle::CIdle()
 {
-	
 	LOG(INFO) <<"CIdler "<< this <<" Constructor!";
 } 
 
