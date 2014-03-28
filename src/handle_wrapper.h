@@ -76,20 +76,31 @@ public:
 	{
 	}
 	virtual ~CHandle(){}
+	virtual void SetHandle(uv_handle_t* pHandle) 
+	{
+  		m_pHandle = pHandle;
+  		m_pHandle->data = this;
+	}
+	inline uv_handle_t* GetHandle() 
+	{
+		return m_pHandle; 
+	}
 	
 	virtual void SetLoop(uv_loop_t* loop)
 	{
 		m_loop = loop;
 	}
-	virtual uv_loop_s* GetLoop()
+	virtual uv_loop_t* GetLoop()
 	{
 		return m_loop;
 	}
-    virtual void SetThreadId(){}
+	/*
+    	virtual void SetThreadId(){}
 	virtual unsigned long GetThreadId()
 	{
 		return m_tid;
 	}
+	*/
 	
 protected:	
 	DISALLOW_COPY_AND_ASSIGN(CHandle);

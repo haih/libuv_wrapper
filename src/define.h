@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <assert.h>
+#include <unistd.h>
+
 
 #include "uv.h"
 #include "glog/logging.h"
